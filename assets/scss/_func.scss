@@ -1,0 +1,24 @@
+@mixin boxshadow($x,$y,$b,$color,$sets){
+		box-shadow: $x $y $b $color #{ $sets};
+		-moz-box-shadow: $x $y $b $color #{ $sets};
+		-webkit-box-shadow: $x $y $b $color #{ $sets};
+		-o-box-shadow: $x $y $b $color #{ $sets};
+}
+
+@mixin rounded($size){
+	border-radius: $size;
+	-moz-border-radius: $size;
+	-webkit-border-radius: $size;
+	-o-border-radius: $size;
+}
+
+@mixin roundby($size,$p1,$p2){
+	border-#{$p1}-#{$p2}-radius: $size;
+	-moz-border-radius-#{$p1}#{$p2}: $size;
+	-webkit-border-#{$p1}-#{$p2}-radius: $size;
+}
+
+@mixin formStyle(){
+	
+}
+

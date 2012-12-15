@@ -1,0 +1,291 @@
+$w320: 320px;
+$w480: 480px;
+$w650: 650px;
+$w786: 786px;
+$w960: 960px;
+$w1000: 1000px;
+$w1200: 1200px;
+
+
+@mixin boxsizing{
+	box-sizing:border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+}
+
+@mixin rel($prop,$mw,$fw,$aj,$f){
+	#{$prop}: (( $mw / $fw) * $aj)#{$f};
+}
+
+@mixin relwidth($mw,$fw,$aj,$f,$margin:20){
+	width: (( ($mw - $margin) / $fw) * $aj)#{$f};
+}
+
+@mixin relheight($mw,$fw,$aj,$f){
+	width: (( $mw / $fw) * $aj)#{$f};
+}
+
+@mixin relfont($mw,$fw,$f){
+	font-size: (( $mw / $fw))#{$f};
+}
+
+@mixin rellineheight($mw,$fw){
+	line-height: (( $mw / $fw));
+}
+
+@mixin makeDivisions($width){
+	&.full{@include units(); margin:0px; @include relwidth($width,$width,100,'%',0px); }
+	&.half{@include units(); margin:0px; @include relwidth($width/2,$width,100,'%',0px); }
+	&.one-third{@include units(); margin:0px; @include relwidth($width/3,$width,100,'%',0px); }
+	&.one-fourth{@include units(); margin:0px; @include relwidth($width/4,$width,100,'%',0px); }
+	&.one-sixth{@include units(); margin:0px; @include relwidth($width/6,$width,100,'%',0px); }
+	&.one-eight{@include units(); margin:0px; @include relwidth($width/8,$width,100,'%',0px); }
+	&.two-third{@include units(); margin:0px; @include relwidth((2*$width)/3,$width,100,'%',0px);}
+	&.five-sixth{@include units(); margin:0px; @include relwidth((5*$width)/6,$width,100,'%',0px);}
+	&.three-quarter{@include units(); margin:0px; @include relwidth((3*$width)/4,$width,100,'%',0px);}
+}
+
+@mixin units($v:20,$p:1,$s:1,$fs:px){ 
+	display: inline-block; 
+	vertical-align: top;
+	@include rel(margin-left,$v,$p,$s,$fs);
+}
+
+@mixin defaults($width){
+	@include boxsizing;
+	max-width: $width;
+	margin:0px auto;
+	.row{
+		clear:both;
+		zoom:1;
+		*display: inline;
+	}
+	.row::after{
+		visibility: hidden; display: block; font-size: 0;content: " ";
+		clear: both; height: 0;
+	}
+
+}
+
+@mixin col2($width){
+
+	$w: $width/2;
+
+
+		&.units1, &.units2{
+			@include relwidth($w,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-2{
+			width:100%;
+			@include units();
+		}
+
+		&.units1,&.units1-2{
+			margin-left:0 !important;
+		}
+
+}
+
+@mixin col4($width){
+
+	$w: $width/4;
+
+
+		&.units1,&.units2,&.units3,&.units4{
+			@include relwidth($w,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-2,&.units2-3,&.units3-4{
+			@include relwidth($w*2,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-3,&.units2-4{
+			@include relwidth($w*3,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-4{
+			width:100%;
+			@include units();
+		}
+
+		&.units1,&.units1-2,&.units1-3,&.units1-4{
+			margin-left:0 !important;
+		}
+
+}
+
+@mixin col6($width){
+
+	$w: $width /6;
+
+
+		&.units1,&.units2,&.units3,&.units4,&.units5,&.units6{
+			@include relwidth($w,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-2,&.units2-3,&.units3-4,&.units4-5,&.units5-6{
+			@include relwidth($w*2,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-3,&.units2-4,&.units3-5,&.units4-6{
+			@include relwidth($w*3,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-4,&.units2-5,&.units3-6{
+			@include relwidth($w*4,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-5,&.units2-6{
+			@include relwidth($w*5,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-6{
+			width:100%;
+			@include units();
+		}
+
+		&.units1,&.units1-2,&.units1-3,&.units1-4,&.units1-5,&.units1-6{
+			margin-left:0 !important;
+		}
+}
+
+@mixin col8($width){
+
+	$w: $width/8;
+
+
+		&.units1,&.units2,&.units3,&.units4,&.units5,&.units6,&.units7,&.units8{
+			@include relwidth($w,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-2,&.units2-3,&.units3-4,&.units4-5,&.units5-6,&.units7-8{
+			@include relwidth($w*2,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-3,&.units2-4,&.units3-5,&.units4-6,&.units5-7,&.units6-8{
+			@include relwidth($w*3,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-4,&.units2-5,&.units3-6,&.units4-7,&.units5-8{
+			@include relwidth($w*4,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-5,&.units2-6,&.units3-7,&.units4-8{
+			@include relwidth($w*5,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-6,&.units2-7,&.units3-8{
+			@include relwidth($w*6,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-7,&.units2-8{
+			@include relwidth($w*7,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-8{
+			width:100%;
+			@include units();
+		}
+
+		&.units1,&.units1-2,&.units1-3,&.units1-4,&.units1-5,&.units1-6,&.units1-7,&.units1-8{
+			margin-left:0 !important;
+		}
+}
+
+
+@mixin col12($width){
+
+	$w: $width/12;
+
+
+		&.units1,&.units2,&.units3,&.units4,&.units5,&.units6,&.units7,&.units8,&.units9,&.units10,&.units11,&.units12{
+			@include relwidth($w,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-2,&.units2-3,&.units3-4,&.units4-5,&.units5-6,&.units7-8,&.units9-10,&.units11-12{
+			@include relwidth($w*2,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-3,&.units2-4,&.units3-5,&.units4-6,&.units5-7,&.units6-8,&.units7-9,&.units10-12{
+			@include relwidth($w*3,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-4,&.units2-5,&.units3-6,&.units4-7,&.units5-8,&.units6-9,&.units7-10,&.units8-11,&.units9-12{
+			@include relwidth($w*4,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-5,&.units2-6,&.units3-7,&.units4-8,&.units5-9,&.units6-10,&.units7-11,&.units8-12{
+			@include relwidth($w*5,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-6,&.units2-7,&.units3-8,&.units4-9,&.units5-10,&.units6-11,&.units7-12{
+			@include relwidth($w*6,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-7,&.units2-8,&.units3-9,&.units4-10,&.units5-11,&.units6-12{
+			@include relwidth($w*7,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-8,&.units2-9,&.units3-10,&.units4-11,&.units5-12{
+			@include relwidth($w*8,$width,100,'%');
+			@include units();
+
+		}
+
+		&.units1-9,&.units2-10,&.units3-11,&.units4-12{
+			@include relwidth($w*9,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-10,&.units2-11,&.units3-12{
+			@include relwidth($w*10,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-11,&.units2-12{
+			@include relwidth($w*11,$width,100,'%');
+			@include units();
+		}
+
+		&.units1-12{
+			width:100%;
+			@include units();
+		}
+
+		&.units1,&.units1-2,&.units1-3,&.units1-4,&.units1-5,&.units1-6,&.units1-7,&.units1-8,&.units1-9,&.units1-10,&.units1-11,&.units1-12{
+			margin-left:0 !important;
+		}
+
+}
+
+
+
+
+
+
+
