@@ -331,6 +331,9 @@ a {
   
   					}*/
 }
+.grid header[role="banner"].banner nav[role="navigation"].standard-menu ul.member-links {
+  border: 1px solid #000;
+}
 .grid header[role="banner"].banner nav[role="navigation"].standard-menu ul.member-links li {
   height: 20px;
   width: 30px;
